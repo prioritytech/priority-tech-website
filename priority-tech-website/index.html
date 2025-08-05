@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priority Tech | IT & Cloud Project Management</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Custom styles for a modern tech look */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* Dark blue-gray background */
+            color: #d1d5db; /* Light gray text */
+        }
+        .section-title {
+            @apply text-3xl font-bold text-white mb-2;
+        }
+        .section-subtitle {
+            @apply text-lg text-gray-400 mb-12 max-w-2xl mx-auto;
+        }
+        .btn {
+            @apply inline-block px-6 py-3 rounded-md text-base font-semibold shadow-lg transition-all duration-300;
+        }
+        .btn-primary {
+            @apply bg-indigo-600 text-white hover:bg-indigo-500 hover:-translate-y-1 transform disabled:bg-indigo-800 disabled:cursor-not-allowed;
+        }
+        .btn-secondary {
+            @apply bg-gray-700 text-white border border-gray-600 hover:bg-gray-600 hover:-translate-y-1 transform;
+        }
+        .gradient-text {
+            @apply bg-gradient-to-r from-purple-400 via-indigo-400 to-blue-400 text-transparent bg-clip-text;
+        }
+        .glass-card {
+            @apply bg-gray-800/50 backdrop-blur-lg border border-gray-700 rounded-lg p-8 transition-all duration-300;
+        }
+        /* Simple spinner for loading state */
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        /* Styles for generated content */
+        #gemini-response h3 {
+            @apply text-xl font-bold text-white mt-6 mb-3;
+        }
+        #gemini-response ul {
+            @apply list-none pl-0 space-y-2;
+        }
+        #gemini-response li {
+            @apply flex items-start;
+        }
+        #gemini-response li::before {
+            content: '✓';
+            @apply text-indigo-400 mr-3 mt-1;
+        }
+        #gemini-response p {
+            @apply mb-4 text-gray-300;
+        }
+        .quote-box {
+            @apply bg-gray-900/50 mt-8 p-6 rounded-lg border border-indigo-500;
+        }
+    </style>
+</head>
+<body class="text-slate-300">
+
+    <!-- Header & Navigation -->
+    <header id="header" class="bg-gray-900/70 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4">
+            <nav class="flex justify-between items-center">
+                <a href="#home" class="text-2xl font-bold text-white"><span class="gradient-text">Priority Tech</span></a>
+                
+                <!-- Desktop Menu -->
+                <ul class="hidden md:flex items-center space-x-8">
+                    <li><a href="#about" class="hover:text-indigo-400 transition-colors">About</a></li>
+                    <li><a href="#services" class="hover:text-indigo-400 transition-colors">Services</a></li>
+                    <li><a href="#tools" class="hover:text-indigo-400 transition-colors">Our Approach</a></li>
+                    <li><a href="#skills" class="hover:text-indigo-400 transition-colors">Skills</a></li>
+                    <li><a href="#contact" class="btn btn-primary !py-2 !px-5">Contact</a></li>
+                </ul>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-gray-300">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </nav>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 border-t border-gray-800">
+            <ul class="flex flex-col items-center space-y-4 py-4">
+                <li><a href="#about" class="mobile-nav-link hover:text-indigo-400 transition-colors">About</a></li>
+                <li><a href="#services" class="mobile-nav-link hover:text-indigo-400 transition-colors">Services</a></li>
+                 <li><a href="#tools" class="mobile-nav-link hover:text-indigo-400 transition-colors">Our Approach</a></li>
+                <li><a href="#skills" class="mobile-nav-link hover:text-indigo-400 transition-colors">Skills</a></li>
+                <li><a href="#contact" class="mobile-nav-link btn btn-primary !py-2 !px-5">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center justify-center text-center bg-gray-900/50 pt-20" style="background-image: radial-gradient(circle at top, rgba(124, 58, 237, 0.1), transparent 40%);">
+            <div class="container mx-auto px-6">
+                <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-4">
+                    <span class="gradient-text">Expert IT & Cloud Project Delivery</span>
+                </h1>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-8">
+                    Architecting & executing complex IT, cloud, and cybersecurity initiatives that drive enterprise-level efficiency and innovation.
+                </p>
+                <div class="space-x-4">
+                    <a href="#contact" class="btn btn-primary">Initiate Contact</a>
+                    <a href="#services" class="btn btn-secondary">Explore Services</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-20 md:py-32">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="section-title">About Priority Tech</h2>
+                <p class="section-subtitle">The Expertise Driving Your Success.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center text-left">
+                    <div class="md:col-span-1 flex justify-center">
+                        <img src="https://placehold.co/400x400/1f2937/9ca3af?text=PT" 
+                             alt="Priority Tech Team" 
+                             class="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover shadow-2xl border-4 border-gray-700">
+                    </div>
+                    <div class="md:col-span-2 space-y-4 text-gray-300">
+                        <h3 class="text-2xl font-bold text-white">Your Strategic Technology Partner</h3>
+                        <p>
+                           At Priority Tech, our team is built on a foundation of over 8 years of enterprise-level experience. We've led complex digital transformations in demanding, highly-regulated industries, and now we bring that deep expertise to help businesses of all sizes thrive.
+                        </p>
+                        <p>
+                           We believe in being more than just a service provider; we are your strategic partner. Our team's approach is to demystify complex technology, making powerful tools like cloud computing and data analytics accessible and affordable. We focus on delivering a clear return on investment (ROI) by blending agile frameworks with practical, results-oriented planning.
+                        </p>
+                        <p>
+                            Our mission is to give your business a competitive edge. Whether you're a large corporation looking to optimize or a small business aiming to scale, our team is focused on providing secure, scalable, and future-proof solutions that act as an engine for your growth.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20 md:py-32 bg-gray-900">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-subtitle">We offer a range of services to help you achieve your goals.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+                    
+                    <!-- Service Card 1 -->
+                    <div class="glass-card hover:border-indigo-500 hover:-translate-y-2">
+                        <div class="mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-400"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">IT Project Management</h3>
+                        <p class="text-gray-400">
+                           Delivering your technology projects on time and on budget. We manage everything from vendor selection to final rollout, ensuring a smooth and predictable process that minimizes disruption to your operations.
+                        </p>
+                    </div>
+
+                    <!-- Service Card 2: Data & Analytics -->
+                    <div class="glass-card hover:border-indigo-500 hover:-translate-y-2">
+                        <div class="mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-400"><path d="M3 3v18h18"></path><path d="m19 9-5 5-4-4-3 3"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Data & Analytics Services</h3>
+                        <p class="text-gray-400">
+                           Turn your business data into your biggest asset. We create easy-to-understand dashboards that reveal growth opportunities, streamline operations, and help you make smarter, data-driven decisions.
+                        </p>
+                    </div>
+
+                    <!-- Service Card 3 -->
+                    <div class="glass-card hover:border-indigo-500 hover:-translate-y-2">
+                        <div class="mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-400"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Cybersecurity & IAM</h3>
+                        <p class="text-gray-400">
+                           Protect your business and customer data from modern threats. We provide affordable, enterprise-grade security solutions to keep your operations safe, secure, and compliant.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Interactive Tools Section -->
+        <section id="tools" class="py-20 md:py-32">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="section-title">Our Approach to Tools</h2>
+                <p class="section-subtitle">Experience our data-driven approach firsthand. We leverage practical tools to tackle complex project management challenges.</p>
+                <div class="max-w-2xl mx-auto glass-card text-left">
+                     <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <div class="flex-shrink-0">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-400"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Example: The Project Prioritization Matrix</h3>
+                            <p class="text-gray-400 mb-4">
+                                For clients managing multiple initiatives, we often use tools like the Project Prioritization Matrix. This helps make informed decisions by plotting projects based on effort and impact, clarifying which initiatives to tackle first to maximize value. Ask us for a demo!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Competencies Section -->
+        <section id="skills" class="pb-20 md:pb-32 bg-gray-900">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="section-title">Core Competencies</h2>
+                <p class="section-subtitle">The frameworks, skills, and tools we leverage for success.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                    <div class="glass-card">
+                        <h3 class="text-xl font-bold text-white mb-4">Methodologies & Frameworks</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">Agile</span>
+                            <span class="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">SDLC</span>
+                            <span class="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">ITIL</span>
+                            <span class="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">Scrum</span>
+                            <span class="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">Waterfall</span>
+                        </div>
+                    </div>
+                    <div class="glass-card">
+                        <h3 class="text-xl font-bold text-white mb-4">Technical & Software Skills</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">Cybersecurity</span>
+                            <span class="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">Risk Management</span>
+                            <span class="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">Databricks</span>
+                             <span class="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">SQL</span>
+                        </div>
+                    </div>
+                    <div class="glass-card">
+                        <h3 class="text-xl font-bold text-white mb-4">Tools & Platforms</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">Azure</span>
+                            <span class="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">Workday</span>
+                            <span class="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">Jira & Asana</span>
+                            <span class="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">Power BI & Tableau</span>
+                            <span class="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">MS Project</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Project Scoping Section -->
+        <section id="ai-scoping" class="py-20 md:py-32">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="section-title">AI Project Scoping & Quoting</h2>
+                <p class="section-subtitle">Have a project in mind? Describe your goal below and get a preliminary project outline and cost estimate, generated instantly by AI.</p>
+                <div class="max-w-2xl mx-auto glass-card">
+                    <div class="w-full">
+                        <label for="project-description" class="block mb-2 font-semibold text-gray-300 text-left">Describe your business problem or project goal:</label>
+                        <textarea id="project-description" name="project-description" rows="4" class="w-full px-4 py-2 rounded-md bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-white" placeholder="e.g., 'We need to migrate our slow on-premise sales database to the cloud' or 'Improve our sales forecasting accuracy.'"></textarea>
+                        <button id="generate-outline-btn" class="btn btn-primary w-full mt-4">Generate Outline & Quote</button>
+                    </div>
+                    <div id="loading-spinner" class="hidden justify-center items-center mt-8">
+                        <div class="spinner"></div>
+                    </div>
+                    <div id="gemini-response" class="mt-8 text-left"></div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 md:py-32 bg-gray-900">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="section-title">Let's Build The Future</h2>
+                <p class="section-subtitle">
+                    Ready to collaborate? Send a message and let's discuss your next project.
+                </p>
+                <div class="max-w-xl mx-auto text-left">
+                    <!-- IMPORTANT: Replace the action URL with your own Formspree endpoint! -->
+                    <form action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST">
+                        <div class="mb-4">
+                            <label for="name" class="block mb-2 font-semibold text-gray-300">Full Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-2 rounded-md bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-white" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block mb-2 font-semibold text-gray-300">Email Address</label>
+                            <!-- Use "email" as the name attribute for Formspree to capture the reply-to address -->
+                            <input type="email" id="email" name="email" class="w-full px-4 py-2 rounded-md bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-white" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block mb-2 font-semibold text-gray-300">Message</label>
+                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 rounded-md bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-white" required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary w-full md:w-auto">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800 text-gray-500 py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2024 Priority Tech. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // --- Gemini AI Project Scoping & Quoting Feature ---
+
+        const generateBtn = document.getElementById('generate-outline-btn');
+        const projectDescription = document.getElementById('project-description');
+        const geminiResponseContainer = document.getElementById('gemini-response');
+        const loadingSpinner = document.getElementById('loading-spinner');
+
+        const getProjectOutline = async () => {
+            const userInput = projectDescription.value;
+            if (!userInput) {
+                alert('Please describe your project goal first.');
+                return;
+            }
+
+            generateBtn.disabled = true;
+            generateBtn.textContent = 'Generating...';
+            loadingSpinner.style.display = 'flex';
+            geminiResponseContainer.innerHTML = '';
+
+            // The API endpoint for our new Netlify function
+            const apiUrl = '/.netlify/functions/get-outline';
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ userInput: userInput }) // Send the user input to our function
+                });
+
+                if (!response.ok) {
+                    const errorText = await response.text(); // Get raw error text
+                    let errorMessage = `Request failed with status: ${response.status}`;
+                    try {
+                        // Try to parse it as JSON for a specific message from the API
+                        const errorBody = JSON.parse(errorText);
+                        if (errorBody && errorBody.error && errorBody.error.message) {
+                            errorMessage = errorBody.error.message;
+                        } else {
+                             errorMessage += `\nResponse: ${errorText}`;
+                        }
+                    } catch (e) {
+                        // If it's not JSON, the raw text is the most useful error info
+                         errorMessage = `Request failed with status: ${response.status}. Response: ${errorText}`;
+                    }
+                    throw new Error(errorMessage);
+                }
+
+                const result = await response.json();
+                
+                if (result.candidates && result.candidates[0].content && result.candidates[0].content.parts[0]) {
+                    const jsonText = result.candidates[0].content.parts[0].text;
+                    try {
+                        const parsedJson = JSON.parse(jsonText);
+                        renderGeminiResponse(parsedJson);
+                    } catch (e) {
+                        console.error("Failed to parse JSON from Gemini:", e);
+                        console.error("Received text:", jsonText);
+                        geminiResponseContainer.innerHTML = '<p class="text-red-400">The AI returned a malformed response. Please try modifying your request and try again.</p>';
+                    }
+                } else {
+                   geminiResponseContainer.innerHTML = '<p class="text-red-400">Sorry, the AI returned an empty response. Please try again.</p>';
+                }
+
+            } catch (error) {
+                console.error('Error calling Netlify function:', error);
+                geminiResponseContainer.innerHTML = `<p class="text-red-400">An error occurred: ${error.message}<br>Please check the console for technical details.</p>`;
+            } finally {
+                generateBtn.disabled = false;
+                generateBtn.textContent = 'Generate Outline & Quote';
+                loadingSpinner.style.display = 'none';
+            }
+        };
+
+        function renderGeminiResponse(data) {
+            let html = '';
+
+            // Render Project Outline
+            if (data.projectOutline) {
+                const { keyObjectives, highLevelPhases, recommendedTech, potentialRisks } = data.projectOutline;
+                html += '<h3>🎯 Key Objectives</h3>';
+                html += '<ul>' + keyObjectives.map(item => '<li>' + item + '</li>').join('') + '</ul>';
+                html += '<h3>🚀 High-Level Phases</h3>';
+                html += '<ul>' + highLevelPhases.map(item => '<li>' + item + '</li>').join('') + '</ul>';
+                html += '<h3>🛠️ Recommended Technologies & Methodologies</h3>';
+                html += '<ul>' + recommendedTech.map(item => '<li>' + item + '</li>').join('') + '</ul>';
+                html += '<h3>⚠️ Potential Risks to Consider</h3>';
+                html += '<ul>' + potentialRisks.map(item => '<li>' + item + '</li>').join('') + '</ul>';
+            }
+
+            // Render Cost Estimation
+            if (data.costEstimation) {
+                const { estimatedHours, hourlyRate, totalCost, currency, disclaimer } = data.costEstimation;
+                html += '<div class="quote-box">';
+                html += '<h3 class="!mt-0">💰 Preliminary Cost Estimate</h3>';
+                html += '<div class="grid grid-cols-3 gap-4 text-center">';
+                html += '<div><p class="text-gray-400 text-sm">Est. Hours</p><p class="text-2xl font-bold text-white">' + estimatedHours + '</p></div>';
+                html += '<div><p class="text-gray-400 text-sm">Hourly Rate</p><p class="text-2xl font-bold text-white">$' + hourlyRate + '/' + currency + '</p></div>';
+                html += '<div><p class="text-gray-400 text-sm">Total Cost</p><p class="text-2xl font-bold text-white">$' + totalCost.toLocaleString() + '</p></div>';
+                html += '</div>';
+                html += '<p class="text-xs text-gray-500 mt-4 text-center">' + disclaimer + '</p>';
+                html += '</div>';
+            }
+            
+            // Render Summary/Call to action
+            if (data.summary) {
+                html += '<p class="mt-6">' + data.summary + '</p>';
+            }
+
+            geminiResponseContainer.innerHTML = html;
+        }
+
+        generateBtn.addEventListener('click', getProjectOutline);
+    </script>
+
+</body>
+</html>

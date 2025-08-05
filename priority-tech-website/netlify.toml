@@ -1,0 +1,5 @@
+# This is a new configuration file.
+# Save this in the root of your project as netlify.toml
+
+[functions]
+  directory = "netlify/functions"
