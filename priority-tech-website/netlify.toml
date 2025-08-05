@@ -1,4 +1,13 @@
-# This is a temporary file to get your site back online.
-# It tells Netlify to ignore the functions folder for this deploy by commenting out the configuration.
-# [functions]
-#  directory = "netlify/functions/"
+# This is the final, complete configuration for your site.
+# It will override any settings in the Netlify UI.
+
+[build]
+  # This tells Netlify to look inside the "priority-tech-website" folder.
+  base = "priority-tech-website"
+  
+  # This tells Netlify that the main site files (like index.html) are in the root of that base folder.
+  publish = "/"
+
+[functions]
+  # This tells Netlify where to find your serverless function.
+  directory = "priority-tech-website/netlify/functions/"
