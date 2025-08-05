@@ -9,6 +9,5 @@
   publish = "/"
 
 [functions]
-  # This tells Netlify where to find your serverless function.
-  directory = "priority-tech-website/netlify/functions/"
-
+  # This path is now correct because it is relative to the base directory defined above.
+  directory = "netlify/functions/"
