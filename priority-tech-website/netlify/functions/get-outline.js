@@ -1,5 +1,5 @@
-// This is the final, production-ready serverless function.
-// Replace the debugging code in your netlify/functions/get-outline.js file with this.
+// This is a revised serverless function to resolve build issues.
+// Replace the code in your netlify/functions/get-outline.js file with this.
 
 exports.handler = async function (event, context) {
   // Only allow POST requests
@@ -26,7 +26,10 @@ exports.handler = async function (event, context) {
 
         Analyze the user's request to determine the project's complexity and which rate is more appropriate. Estimate the total hours required. Small projects might be 40-80 hours, medium 80-160, and large 160+.
 
-        You MUST return only a valid JSON object that adheres to the provided schema.
+        You MUST return only a valid JSON object. The JSON object should have two main keys: "projectOutline" and "costEstimation".
+        The "projectOutline" object should contain: keyObjectives (array of strings), highLevelPhases (array of strings), recommendedTech (array of strings), and potentialRisks (array of strings).
+        The "costEstimation" object should contain: estimatedHours (number), hourlyRate (number), totalCost (number), currency (string), and disclaimer (string).
+        Also include a "summary" key with a concluding string of text.
     `;
 
     // Securely get the API key from Netlify's environment variables
@@ -38,35 +41,11 @@ exports.handler = async function (event, context) {
     
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
 
+    // Simplified payload without the complex responseSchema object
     const payload = {
         contents: [{ parts: [{ text: prompt }] }],
         generationConfig: {
             responseMimeType: "application/json",
-            responseSchema: {
-                type: "OBJECT",
-                properties: {
-                    projectOutline: {
-                        type: "OBJECT",
-                        properties: {
-                            keyObjectives: { type: "ARRAY", items: { type: "STRING" } },
-                            highLevelPhases: { type: "ARRAY", items: { type: "STRING" } },
-                            recommendedTech: { type: "ARRAY", items: { type: "STRING" } },
-                            potentialRisks: { type: "ARRAY", items: { type: "STRING" } }
-                        }
-                    },
-                    costEstimation: {
-                        type: "OBJECT",
-                        properties: {
-                            estimatedHours: { type: "NUMBER" },
-                            hourlyRate: { type: "NUMBER" },
-                            totalCost: { type: "NUMBER" },
-                            currency: { type: "STRING" },
-                            disclaimer: { type: "STRING" }
-                        }
-                    },
-                    summary: { type: "STRING" }
-                }
-            }
         }
     };
 
